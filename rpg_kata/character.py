@@ -4,8 +4,14 @@ class Character:
         self.health = 100
 
     def isAlive(self):
-        return True
+        if self.health == 0:
+            return False
+        else:
+            return True
 
     def damage(self, oponent, damageAmount):
-        oponent.health = oponent.health-damageAmount
+        if damageAmount >= oponent.health:
+            oponent.health = 0
+        else:
+            oponent.health = oponent.health-damageAmount
 
