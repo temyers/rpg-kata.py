@@ -36,5 +36,26 @@ class TestCharacter(unittest.TestCase):
         self.assertEqual(character2.isAlive(), False)
         self.assertEqual(character1.health, 100)
 
+    def test_should_be_able_to_heal_another_character(self):
+        character1 = Character()
+        character2 = Character()
+
+        character2.health = 50
+
+        character1.heal(character2, 10)
+        self.assertEqual(character2.health, 60)
+        self.assertEqual(character1.health, 100)
+
+    def test_should_not_be_able_to_heal_more_than_starting_health(self):
+        character1 = Character()
+        character2 = Character()
+
+        character2.health = 90
+
+        character1.heal(character2, 20)
+        self.assertEqual(character2.health, 100)
+        self.assertEqual(character1.health, 100)
+
+
 if __name__ == '__main__':
     unittest.main()
