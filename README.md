@@ -15,7 +15,7 @@ This is a fun kata that has the programmer building simple combat rules, as for 
 ## Iteration One ##
 
 1. All Characters, when created, have:
-    - Health, starting at 1000
+    - Health, starting at 100
     - Level, starting at 1
     - May be Alive or Dead, starting Alive (Alive may be a true/false)
 
@@ -25,7 +25,7 @@ This is a fun kata that has the programmer building simple combat rules, as for 
 
 1. A Character can Heal a Character.
     - Dead characters cannot be healed
-    - Healing cannot raise health above 1000
+    - Healing cannot raise health above 100
 
 ## Iteration Two ##
 
