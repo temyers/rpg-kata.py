@@ -11,17 +11,21 @@ class Character:
         else:
             return True
 
-    def damage(self, oponent, damageAmount):
-        if damageAmount >= oponent.health:
-            oponent.health = 0
+    def damage(self, opponent, damageAmount):
+        if self == opponent:
+            # do nothing
+            return
+            
+        if damageAmount >= opponent.health:
+            opponent.health = 0
         else:
-            oponent.health = oponent.health-damageAmount
+            opponent.health = opponent.health-damageAmount
 
-    def heal(self, oponent, healAmount):
-        if oponent.isAlive() == True:
-            oponent.health = oponent.health + healAmount
-            if oponent.health > STARTING_HEALTH:
-               oponent.health = STARTING_HEALTH
+    def heal(self, opponent, healAmount):
+        if opponent.isAlive() == True:
+            opponent.health = opponent.health + healAmount
+            if opponent.health > STARTING_HEALTH:
+               opponent.health = STARTING_HEALTH
         
         
 

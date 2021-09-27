@@ -67,6 +67,13 @@ class TestCharacter(unittest.TestCase):
         self.assertEqual(character2.isAlive(), False)
         self.assertEqual(character1.health, 100)
 
+    def test_no_self_harm(self):
+        character1 = Character()
+
+        character1.health = 50
+
+        character1.damage(character1, 10)
+        self.assertEqual(character1.health, 50)
 
 if __name__ == '__main__':
     unittest.main()
