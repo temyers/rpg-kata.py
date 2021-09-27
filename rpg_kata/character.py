@@ -15,17 +15,18 @@ class Character:
         if self == opponent:
             # do nothing
             return
-            
+
         if damageAmount >= opponent.health:
             opponent.health = 0
         else:
             opponent.health = opponent.health-damageAmount
 
     def heal(self, opponent, healAmount):
-        if opponent.isAlive() == True:
-            opponent.health = opponent.health + healAmount
-            if opponent.health > STARTING_HEALTH:
-               opponent.health = STARTING_HEALTH
+        if self == opponent:
+            if opponent.isAlive() == True:
+                opponent.health = opponent.health + healAmount
+                if opponent.health > STARTING_HEALTH:
+                    opponent.health = STARTING_HEALTH
         
         
 

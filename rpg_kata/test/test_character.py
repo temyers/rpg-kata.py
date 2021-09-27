@@ -36,36 +36,22 @@ class TestCharacter(unittest.TestCase):
         self.assertEqual(character2.isAlive(), False)
         self.assertEqual(character1.health, 100)
 
-    def test_should_be_able_to_heal_another_character(self):
-        character1 = Character()
-        character2 = Character()
-
-        character2.health = 50
-
-        character1.heal(character2, 10)
-        self.assertEqual(character2.health, 60)
-        self.assertEqual(character1.health, 100)
-
     def test_should_not_be_able_to_heal_more_than_starting_health(self):
         character1 = Character()
-        character2 = Character()
 
-        character2.health = 90
+        character1.health = 90
 
-        character1.heal(character2, 20)
-        self.assertEqual(character2.health, 100)
+        character1.heal(character1, 20)
         self.assertEqual(character1.health, 100)
 
     def test_should_not_be_able_to_heal_dead_characters(self):
         character1 = Character()
-        character2 = Character()
 
-        character2.health = 0
+        character1.health = 0
 
-        character1.heal(character2, 20)
-        self.assertEqual(character2.health, 0)
-        self.assertEqual(character2.isAlive(), False)
-        self.assertEqual(character1.health, 100)
+        character1.heal(character1, 20)
+        self.assertEqual(character1.health, 0)
+        self.assertEqual(character1.isAlive(), False)
 
     def test_no_self_harm(self):
         character1 = Character()
@@ -74,6 +60,20 @@ class TestCharacter(unittest.TestCase):
 
         character1.damage(character1, 10)
         self.assertEqual(character1.health, 50)
+
+    def test_character_should_only_heal_itself(self):
+        character1 = Character()
+        character2 = Character()
+
+        character1.health = 60
+        character2.health = 50
+
+        character1.heal(character2, 10)
+        character1.heal(character1, 20)
+        self.assertEqual(character2.health, 50)
+        self.assertEqual(character1.health, 80)
+
+
 
 if __name__ == '__main__':
     unittest.main()
